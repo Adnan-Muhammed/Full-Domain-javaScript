@@ -1,0 +1,9 @@
+
+
+
+
+[`If you want to either use a for...of loop or call next()
+ multiple times manually, you can only use one of these approaches, 
+because a generator is consumed as it runs. 
+Once a generator is iterated over (either by for...of or next() calls), 
+it reaches the end and cannot be reused without restarting the generator.`]

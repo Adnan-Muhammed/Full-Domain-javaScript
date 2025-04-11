@@ -1,0 +1,5 @@
+call(), apply(), and bind() are JavaScript methods used to borrow a function from one object and set its this context to another object.
+
+call(): Invokes the function immediately, passing arguments individually.
+apply(): Invokes the function immediately, passing arguments as an array.
+bind(): Returns a new function with a specific this context, to be invoked later.

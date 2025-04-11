@@ -1,0 +1,2 @@
+[`The expression !arr.some((elem) => typeof elem === 'string') 
+checks whether none of the elements in the array are of type`]

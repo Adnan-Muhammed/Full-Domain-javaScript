@@ -1,0 +1,6 @@
+A closure is a feature in programming where a function retains access to its own scope 
+and the scope of its outer functions
+even after the outer function has finished executing.
+ 
+  This allows the inner function to access variables and parameters from its containing function 
+  even when it is called outside of that function's scope.

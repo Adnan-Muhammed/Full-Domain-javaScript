@@ -1,0 +1,7 @@
+higher-order functions are functions that either:
+
+Take one or more functions as arguments, or
+Return a function as a result.
+
+
+both are possible 

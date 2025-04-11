@@ -1,0 +1,17 @@
+
+let weakMap = new WeakMap()
+
+
+let key = {'key':"keyValue"}
+
+
+
+
+weakMap.set(key,{'weakValue':'weakValue'})
+
+
+key =null
+
+console.log(weakMap.get(key));
+
+in this case there is no variable referenced or point any structure to this object  {'weakValue':'weakValue'}  so its become    GC 'd  due to key become no longer referenced  is it
