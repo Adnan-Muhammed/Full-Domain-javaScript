@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .box {
+      padding: 10px;
+      margin: 10px;
+      border: 2px solid #333;
+    }
+    #level1 {
+      background-color: #f9f9f9;
+    }
+    #level2 {
+      background-color: #e8f0fe;
+    }
+    #level3 {
+      background-color: #d0f0c0;
+    }
+    #level4 {
+      background-color: #fff3cd;
+    }
+    #level5 {
+      background-color: #f8d7da;
+    }
+    #target {
+      background-color: #d1ecf1;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div id="level1" class="box">
+      Level 1 Capturing Example
+      <div id="level2" class="box">
+        Level 2
+        <div id="level3" class="box">
+          Level 3
+          <div id="level4" class="box">
+            Level 4
+            <div id="level5" class="box">
+              Level 5
+              <div id="target" class="box">
+                Level 6 (Target)
+                <br />
+                <button id= "clickBtn">Click Me</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("level1").addEventListener("click", (e) => {
+        console.log("level 1 clicked");
+      });
+      document.getElementById("level2").addEventListener("click", () => {
+        console.log("level 2 clicked");
+      });
+      document.getElementById("level3").addEventListener("mouseover", (e) => {
+        console.log("level 3 clicked");
+      });
+      document.getElementById("level4").addEventListener("mouseover", () => {
+        console.log("level 4 clicked");
+      });
+      document.getElementById("level5").addEventListener("mouseover", () => {
+        console.log("level 5 clicked");
+      });
+     
+      document.getElementById("clickBtn").addEventListener("mouseover", () => {
+        console.log("button enter  clicked");
+      });
+    </script>
+  </body>
+</html>

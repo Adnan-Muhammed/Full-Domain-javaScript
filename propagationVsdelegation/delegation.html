@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Event Delegation Examples</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        transition: background-color 0.3s;
+      }
+      h2 {
+        margin-top: 40px;
+        color: #333;
+      }
+      .section {
+        border: 2px solid #ccc;
+        padding: 20px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+      }
+      #buttonContainer button {
+        margin-right: 10px;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+      #todoList li {
+        margin: 10px 0;
+        list-style: none;
+      }
+      #todoList button.delete {
+        margin-left: 10px;
+        padding: 4px 8px;
+        background-color: crimson;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      .undo {
+        padding: 5px 10px;
+        background-color: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+        display: none;
+      }
+      input {
+        display: block;
+        margin-bottom: 10px;
+        padding: 8px;
+        width: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🧠 Event Delegation Examples</h1>
+
+    <!-- Button Group Example -->
+    <div class="section">
+      <h2>1. Button Group (Change Background Color)</h2>
+      <div id="buttonContainer">
+        <button data-color="lightcoral">Red</button>
+        <button data-color="lightblue">Blue</button>
+        <button data-color="lightgreen">Green</button>
+      </div>
+    </div>
+
+    <!-- To-do List Example -->
+    <div class="section">
+      <ul id="todoList">
+        <li>Learn HTML <button class="delete">Delete</button></li>
+        <li>Practice CSS <button class="delete">Delete</button></li>
+        <li>Master JavaScript <button class="delete">Delete</button></li>
+      </ul>
+      <button class="undo">Undo</button>
+      <!-- Undo button initially hidden -->
+    </div>
+
+    <!-- Form Input Focus Example -->
+    <div class="section">
+      <h2>3. Form Input (Focus Logging)</h2>
+      <form id="myForm">
+        <input type="text" name="name" placeholder="Enter your name" />
+        <input type="email" name="email" placeholder="Enter your email" />
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+        />
+      </form>
+    </div>
+
+    <!-- Script for Delegation -->
+    <script>
+      // 1. Button Group Delegation
+      document
+        .getElementById("buttonContainer")
+        .addEventListener("click", (e) => {
+          if (e.target.tagName === "BUTTON") {
+            const color = e.target.getAttribute("data-color");
+            document.body.style.backgroundColor = color;
+            console.log("Background changed to:", color);
+          }
+        });
+
+
+
+
+
+      // // 2. To-do List Delegation
+      // document.getElementById("todoList").addEventListener("click", (e) => {
+      //   if (e.target.classList.contains("delete")) {
+      //     // if( e.target.parentElement.nodeName =="LI"){
+
+      //         console.log(e.target.parentElement.nodeName);
+
+      //         e.target.parentElement.remove();
+      //         console.log("Task deleted");
+      //     // }
+      //   }
+      // });
+
+
+
+
+
+
+      // Track the removed item for undo
+    //   let removedTask = null;
+      let removedTask = [];
+
+      // 2. To-do List Delegation
+      document.getElementById("todoList").addEventListener("click", (e) => {
+        if (e.target.classList.contains("delete")) {
+          // Store the removed task in case of undo
+        //   removedTask = e.target.parentElement;
+
+        removedTask.push (e.target.parentElement);
+
+
+          // Remove the task
+          e.target.parentElement.remove();
+          console.log("Task deleted");
+
+          // Show the undo button
+          document.querySelector(".undo").style.display = "block";
+        }
+      });
+
+      // Undo the last deletion
+      document.querySelector(".undo").addEventListener("click", () => {
+        if (removedTask.length>0) {
+          // Restore the deleted task
+          let pulledTaskTest = removedTask.shift()
+          document.getElementById("todoList").appendChild(pulledTaskTest);
+          console.log("Task restored");
+
+          // Hide the undo button again
+    //       document.querySelector(".undo").style.display = "none";
+    //       removedTask = null; // Reset the removed task
+    //     }
+    //   });
+
+
+    if(removedTask.length<=0){
+
+        document.querySelector(".undo").style.display = "none";
+        removedTask = []; // Reset the removed task
+        
+    }
+
+        }
+      });
+
+      //----=========---------=======-----=
+
+      // 3. Form Focusin Delegation
+      document.getElementById("myForm").addEventListener("focusin", (e) => {
+        console.log("Focused on:", e.target.name);
+      });
+    </script>
+  </body>
+</html>
